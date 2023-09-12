@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  yandex-rasp:
+    container_name: yandex-rasp
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - backend
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_URL: postgres
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  postgres:
+    image: postgres:15.4
+    volumes:
+      - ./docker/postgres/data:/data/postgres
+    ports:
+      - "15432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    networks:
+      - backend
+
+networks:
+  backend:
