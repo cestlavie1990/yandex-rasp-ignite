@@ -2,7 +2,6 @@ package ru.minakov.yandexraspignite.common.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.repository.CrudRepository;
-import ru.minakov.yandexraspignite.common.mapper.IMapper;
 import ru.minakov.yandexraspignite.common.repository.IEntity;
 
 import javax.persistence.EntityNotFoundException;
@@ -13,8 +12,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
-public class AbstractService<E extends IEntity<ID>, ID, D> implements IService<E, ID> {
-    protected final IMapper<E, D> mapper;
+public class AbstractService<E extends IEntity<ID>, ID> implements IService<E, ID> {
     protected final CrudRepository<E, ID> repository;
 
     @Override

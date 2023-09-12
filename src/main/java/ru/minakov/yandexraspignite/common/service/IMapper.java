@@ -1,4 +1,4 @@
-package ru.minakov.yandexraspignite.common.mapper;
+package ru.minakov.yandexraspignite.common.service;
 
 import java.util.Collection;
 import java.util.List;
